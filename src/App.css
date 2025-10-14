@@ -1,0 +1,1003 @@
+/* Reset y base - LIMPIAR Y ARREGLAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* FONDO CUADRICULADO - ÚNICA DEFINICIÓN DE BODY */
+body {
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #2c3e50;
+  /* Fondo cuadriculado con líneas azul claro */
+  background: #ffffff;
+  background-image: 
+    linear-gradient(to right, rgba(144, 202, 249, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(144, 202, 249, 0.3) 1px, transparent 1px);
+  background-size: 25px 25px;
+  background-position: 0 0, 0 0;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background: transparent;
+  min-height: 100vh;
+}
+
+/* Layout principal del diario */
+.diario-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+.main-layout {
+  display: flex;
+  flex: 1;
+  max-width: 1280px; /* Aumentar para acomodar sidebar más ancho */
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 2rem;
+  background: transparent;
+}
+
+/* Login */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: transparent;
+}
+
+.login-card {
+  background: #fff;
+  padding: 3rem;
+  border-radius: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+  border: 1px solid #e1e8ed;
+}
+
+.login-card h2 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #bdc3c7;
+  border-radius: 0;
+  font-size: 1rem;
+  background: #ecf0f1;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #7f8c8d;
+  background: #fff;
+}
+
+button {
+  background: #34495e;
+  color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  margin-bottom: 1rem;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #2c3e50;
+}
+
+button:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background: #e74c3c;
+  color: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* Header del diario */
+.diario-header-new {
+  background: rgba(255, 255, 255, 0.95);
+  color: #2c3e50;
+  padding: 2rem;
+  border-bottom: 1px solid #e1e8ed;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.welcome-text {
+  font-weight: 400;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.logout-btn-new {
+  background: #34495e;
+  border: 1px solid #34495e;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+
+.logout-btn-new:hover {
+  background: #2c3e50;
+}
+
+/* CONTENEDOR COMÚN UNIFICADO - ÚNICA DEFINICIÓN */
+.entrada-container {
+  width: 100% !important;
+  max-width: 800px !important;
+  min-width: 800px !important; /* FORZAR ancho mínimo */
+  margin: 0 auto !important;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e1e8ed;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* CONTENT AREA - CENTRAR EL CONTENEDOR */
+.content-area {
+  flex: 2;
+  width: 100%;
+  min-width: 0; /* Permitir que se encoja */
+  display: flex !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  align-items: flex-start;
+}
+
+.sidebar-entradas {
+  flex: 1;
+  max-width: 380px; /* Aumentar ancho para mejor visualización */
+  min-width: 380px;
+}
+
+/* ENTRADA LECTURA - SIN DUPLICADOS */
+.entrada-lectura {
+  width: 100% !important;
+  padding: 2rem;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0;
+  max-width: none !important;
+}
+
+.entrada-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e1e8ed;
+  text-align: center;
+}
+
+.entrada-titulo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.entrada-fecha {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+}
+
+.entrada-tiempo {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #95a5a6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* FORMULARIO - SIN DUPLICADOS, MISMO ANCHO */
+.formulario-nuevo {
+  width: 100% !important;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0;
+  max-width: none !important;
+}
+
+.formulario-header-nuevo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 1px solid #e1e8ed;
+  background: #ecf0f1;
+}
+
+.formulario-header-nuevo h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.cancelar-btn-nuevo {
+  background: #95a5a6;
+  border: 1px solid #95a5a6;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+
+.secciones-nav-nuevo {
+  display: flex;
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.seccion-btn-nuevo {
+  flex: 1;
+  padding: 1.2rem 1rem;
+  background: rgba(248, 249, 252, 0.8);
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #7f8c8d;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.seccion-btn-nuevo.activo {
+  background: #fff;
+  color: #2c3e50;
+  border-bottom-color: #34495e;
+}
+
+.seccion {
+  padding: 2rem;
+}
+
+.form-actions-nuevo {
+  padding: 2rem;
+  border-top: 1px solid #e1e8ed;
+  background: rgba(248, 249, 252, 0.8);
+}
+
+/* Secciones de lectura */
+.seccion-lectura {
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e1e8ed;
+  border-radius: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.seccion-lectura h3 {
+  background: #ecf0f1;
+  color: #2c3e50;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #bdc3c7;
+}
+
+.seccion-lectura > div {
+  padding: 1.5rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(248, 249, 252, 0.8);
+  border: 1px solid #e1e8ed;
+}
+
+.info-item .label {
+  font-weight: 700;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+
+.info-item .value {
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Gratitud */
+.gratitud-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.gratitud-item {
+  background: rgba(248, 249, 252, 0.8);
+  padding: 1rem;
+  border: 1px solid #e1e8ed;
+  font-weight: 400;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+/* Campos del formulario */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #bdc3c7;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #2c3e50;
+  background: rgba(236, 240, 241, 0.8);
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #7f8c8d;
+  outline: none;
+  background: #fff;
+}
+
+.titulo-input {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 1.2rem;
+  text-transform: uppercase;
+  background: #fff;
+  border: 2px solid #34495e;
+}
+
+.titulo-principal {
+  background: rgba(236, 240, 241, 0.8);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #bdc3c7;
+}
+
+.fecha-actual {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(248, 249, 252, 0.8);
+  border: 1px solid #e1e8ed;
+}
+
+.fecha-actual h3 {
+  color: #7f8c8d;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.gratitud-section h3 {
+  color: #2c3e50;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e1e8ed;
+}
+
+/* Botones */
+.guardar-btn-nuevo {
+  background: #34495e;
+  color: #fff;
+  border: none;
+  padding: 1.2rem 2rem;
+  border-radius: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  letter-spacing: 1px;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.guardar-btn-nuevo:hover {
+  background: #2c3e50;
+}
+
+.crear-primera-btn {
+  background: #34495e;
+  color: #fff;
+  border: none;
+  padding: 1.5rem 2rem;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+/* Emoticons */
+.emoticons-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.emoticon-btn {
+  background: rgba(236, 240, 241, 0.8);
+  border: 1px solid #bdc3c7;
+  padding: 1rem;
+  border-radius: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.emoticon-btn:hover {
+  background: #d5dbdb;
+}
+
+.emoticon-btn.activo {
+  background: #34495e;
+  border-color: #34495e;
+  transform: scale(0.95);
+}
+
+/* Sidebar */
+.sidebar-container {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e1e8ed;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+  max-height: 380px; /* Altura exacta para 3 tarjetas + header */
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e1e8ed;
+  background: #ecf0f1;
+}
+
+.sidebar-header h3 {
+  color: #2c3e50;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.nueva-entrada-sidebar-btn {
+  background: #34495e;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+/* Timeline */
+.entradas-timeline {
+  display: flex;
+  flex-direction: column;
+  height: 285px; /* Altura exacta para 3 tarjetas (95px cada una) */
+  overflow-y: auto;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem; /* Padding más compacto */
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 1px solid #e1e8ed;
+  background: rgba(255, 255, 255, 0.8);
+  min-height: 95px; /* Altura fija para cada tarjeta */
+  max-height: 95px;
+  flex-shrink: 0;
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-titulo {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+.timeline-fecha-completa {
+  font-size: 0.7rem;
+  color: #7f8c8d;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.timeline-detalles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.timeline-ubicacion, .timeline-clima {
+  font-size: 0.7rem;
+  color: #95a5a6;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timeline-menu {
+  position: relative;
+}
+
+.menu-toggle-btn {
+  background: #bdc3c7;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  color: #7f8c8d;
+  font-size: 1rem;
+  font-weight: 900;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+}
+
+.menu-toggle-btn:hover {
+  background: #95a5a6;
+  color: #fff;
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #bdc3c7;
+  border-radius: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  min-width: 120px;
+  overflow: hidden;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: left;
+  text-transform: uppercase;
+  color: #2c3e50;
+  letter-spacing: 0.5px;
+}
+
+.menu-item:hover {
+  background: #ecf0f1;
+}
+
+.menu-item + .menu-item {
+  border-top: 1px solid #e1e8ed;
+}
+
+.menu-overlay-close {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 998;
+}
+
+/* Estados de carga y errores */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  color: #7f8c8d;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.error-banner {
+  background: #e74c3c;
+  color: #fff;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin: 0 auto 2rem auto;
+  max-width: 1200px;
+}
+
+/* Entrada vacía */
+.entrada-vacia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 2rem;
+}
+
+.bienvenida {
+  text-align: center;
+  max-width: 500px;
+  padding: 3rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.bienvenida h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.bienvenida p {
+  color: #7f8c8d;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Texto de contenido */
+.texto-contenido {
+  color: #2c3e50;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.texto-destacado {
+  color: #2c3e50;
+  font-weight: 600;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* Preguntas y respuestas */
+.preguntas-grid-lectura {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.preguntas-grid-lectura > div {
+  padding: 1rem;
+  background: rgba(248, 249, 252, 0.8);
+  border-left: 3px solid #34495e;
+}
+
+.preguntas-grid-lectura strong {
+  color: #34495e;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* =================================
+   CORRECCIÓN FINAL - ANCHO CONSISTENTE
+   ================================= */
+
+/* Forzar que el contenedor común tenga prioridad máxima */
+.content-area .entrada-container {
+  width: 100% !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  flex: none !important;
+}
+
+/* Asegurar que tanto lectura como formulario ocupen todo el contenedor */
+.entrada-container .entrada-lectura,
+.entrada-container .formulario-nuevo {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  flex: none !important;
+  display: block !important;
+}
+
+/* Específicamente para el formulario, eliminar cualquier restricción de ancho */
+.entrada-container .formulario-nuevo {
+  min-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Asegurar que las secciones del formulario no limiten el ancho */
+.formulario-nuevo .formulario-header-nuevo,
+.formulario-nuevo .secciones-nav-nuevo,
+.formulario-nuevo .seccion,
+.formulario-nuevo .form-actions-nuevo {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+}
+
+/* =================================
+   CORRECCIÓN ESPECÍFICA ANCHO FORMULARIO
+   ================================= */
+
+/* FORZAR ancho del formulario cuando está en modo edición */
+.entrada-container .formulario-nuevo {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  overflow: visible !important;
+}
+
+/* Todas las secciones del formulario deben ocupar el 100% del contenedor */
+.formulario-nuevo > * {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  box-sizing: border-box !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Específicos del formulario */
+.formulario-nuevo .formulario-header-nuevo {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 2rem !important;
+}
+
+.formulario-nuevo .secciones-nav-nuevo {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.formulario-nuevo .seccion {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 2rem !important;
+}
+
+.formulario-nuevo .form-actions-nuevo {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 2rem !important;
+}
+
+/* Para todos los form-groups dentro del formulario */
+.formulario-nuevo .form-group {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.formulario-nuevo .form-group input,
+.formulario-nuevo .form-group textarea {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Grids dentro del formulario */
+.formulario-nuevo .info-grid,
+.formulario-nuevo .emoticons-grid {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Eliminar cualquier float o position que cause problemas */
+.formulario-nuevo,
+.formulario-nuevo * {
+  position: static !important;
+  float: none !important;
+}
+
+/* Override cualquier estilo inline */
+.formulario-nuevo[style*="width"],
+.formulario-nuevo *[style*="width"] {
+  width: 100% !important;
+}
+
+/* =================================
+   FIN CORRECCIÓN FORMULARIO
+   ================================= */
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .main-layout {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  
+  .content-area {
+    order: 2;
+    padding: 0 1rem;
+  }
+  
+  .entrada-container {
+    max-width: 100% !important;
+    min-width: auto !important;
+    margin: 0 !important;
+  }
+  
+  .sidebar-entradas {
+    order: 1;
+    max-width: none;
+    min-width: auto;
+  }
+  
+  .sidebar-container {
+    max-height: 300px; /* Más pequeño en móvil */
+  }
+  
+  .entradas-timeline {
+    height: 240px; /* Ajustar para móvil */
+  }
+  
+  .timeline-item {
+    min-height: 80px;
+    max-height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .entrada-container {
+    margin: 0;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .emoticons-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .secciones-nav-nuevo {
+    flex-direction: column;
+  }
+}
