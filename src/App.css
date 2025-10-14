@@ -605,18 +605,30 @@ button:disabled {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1.2rem 1.5rem; /* Padding más compacto */
+  padding: 1.2rem 1.5rem;
   cursor: pointer;
   transition: all 0.2s;
   border-bottom: 1px solid #e1e8ed;
   background: rgba(255, 255, 255, 0.8);
-  min-height: 95px; /* Altura fija para cada tarjeta */
-  max-height: 95px;
+  min-height: auto;
   flex-shrink: 0;
+}
+
+.timeline-item:hover {
+  background: rgba(248, 249, 252, 0.9);
+}
+
+.timeline-item.activa {
+  background: #ecf0f1;
+  border-left: 3px solid #34495e;
 }
 
 .timeline-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden; /* Evitar que el contenido se desborde */
 }
 
 .timeline-titulo {
@@ -627,6 +639,8 @@ button:disabled {
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1.3;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .timeline-fecha-completa {
@@ -634,186 +648,40 @@ button:disabled {
   color: #7f8c8d;
   font-weight: 400;
   text-transform: uppercase;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 1px;
+  line-height: 1.1;
 }
 
+/* CORRECCIÓN: Ubicación y clima en la misma línea */
 .timeline-detalles {
   display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  margin-top: auto;
 }
 
-.timeline-ubicacion, .timeline-clima {
-  font-size: 0.7rem;
+.timeline-ubicacion, 
+.timeline-clima {
+  font-size: 0.65rem;
   color: #95a5a6;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-.timeline-menu {
-  position: relative;
-}
-
-.menu-toggle-btn {
-  background: #bdc3c7;
-  border: none;
-  cursor: pointer;
-  padding: 0.4rem 0.6rem;
-  color: #7f8c8d;
-  font-size: 1rem;
-  font-weight: 900;
-  width: auto;
-  height: auto;
-  border-radius: 0;
-}
-
-.menu-toggle-btn:hover {
-  background: #95a5a6;
-  color: #fff;
-}
-
-.menu-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: #fff;
-  border: 1px solid #bdc3c7;
-  border-radius: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 999;
-  min-width: 120px;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
 }
 
-.menu-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-align: left;
-  text-transform: uppercase;
-  color: #2c3e50;
-  letter-spacing: 0.5px;
-}
-
-.menu-item:hover {
-  background: #ecf0f1;
-}
-
-.menu-item + .menu-item {
-  border-top: 1px solid #e1e8ed;
-}
-
-.menu-overlay-close {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 998;
-}
-
-/* Estados de carga y errores */
-.loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  color: #7f8c8d;
-  font-size: 1rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.error-banner {
-  background: #e74c3c;
-  color: #fff;
-  padding: 1rem 2rem;
-  text-align: center;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  margin: 0 auto 2rem auto;
-  max-width: 1200px;
-}
-
-/* Entrada vacía */
-.entrada-vacia {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  padding: 2rem;
-}
-
-.bienvenida {
-  text-align: center;
-  max-width: 500px;
-  padding: 3rem;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-}
-
-.bienvenida h2 {
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.bienvenida p {
-  color: #7f8c8d;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-/* Texto de contenido */
-.texto-contenido {
-  color: #2c3e50;
-  line-height: 1.8;
-  font-weight: 400;
-}
-
-.texto-destacado {
-  color: #2c3e50;
-  font-weight: 600;
-  line-height: 1.8;
-  font-style: italic;
-}
-
-/* Preguntas y respuestas */
-.preguntas-grid-lectura {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  padding: 1rem 0;
-}
-
-.preguntas-grid-lectura > div {
-  padding: 1rem;
-  background: rgba(248, 249, 252, 0.8);
-  border-left: 3px solid #34495e;
-}
-
-.preguntas-grid-lectura strong {
-  color: #34495e;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
+/* Agregar separador visual entre ubicación y clima */
+.timeline-ubicacion::after {
+  content: " • ";
+  color: #bdc3c7;
+  margin-left: 0.5rem;
 }
 
 /* =================================
